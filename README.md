@@ -60,7 +60,7 @@ ACCESS_TOKEN_SECRET=
 ACCESS_TOKEN_EXPIRY=
 REFRESH_TOKEN_SECRET=
 REFRESH_TOKEN_EXPIRY=
-
+(see in env.sample)
 
 5. Set **Build Command**: `npm install`
 6. Set **Start Command**: `npm run dev` (i use nodemon in it)
