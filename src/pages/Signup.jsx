@@ -15,6 +15,7 @@ const Signup = () => {
 
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false); // loader state
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -28,7 +29,7 @@ const Signup = () => {
     setIsLoading(true); // show loader
 
     try {
-      const response = await axios.post("/api/v1/users/register", formData, {
+      const response = await axios.post(`${API_BASE_URL}/api/v1/users/register`, formData, {
         withCredentials: true
       });
 

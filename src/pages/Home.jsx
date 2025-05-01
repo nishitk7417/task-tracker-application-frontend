@@ -9,6 +9,7 @@ function Home() {
   const [newProjectTitle, setNewProjectTitle] = useState('');
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     if (!token) {
@@ -21,7 +22,7 @@ function Home() {
   // fetching project
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('/api/v1/projects',{
+      const res = await axios.get(`${API_BASE_URL}/api/v1/projects`,{
         headers:{
           Authorization: `Bearer ${token}`,
         },
@@ -46,7 +47,7 @@ function Home() {
       return;
     }
     try {
-      const res = await axios.post('/api/v1/projects', { title: newProjectTitle }, {
+      const res = await axios.post(`${API_BASE_URL}/api/v1/projects`, { title: newProjectTitle }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },});
@@ -60,7 +61,7 @@ function Home() {
   //delete projeect
   const handleDeleteProject = async (projectId) => {
     try {
-      await axios.delete(`/api/v1/projects/${projectId}`, {
+      await axios.delete(`${API_BASE_URL}/api/v1/projects/${projectId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

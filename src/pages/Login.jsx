@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loader from "../components/Loader"; // adjust the path
+import Loader from "../components/Loader"; 
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const Login = () => {
     password: ""
   });
   const [message, setMessage] = useState("");
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -23,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true); //  show loader
     try {
-      const res = await axios.post("/api/v1/users/login", formData, {
+      const res = await axios.post(`${API_BASE_URL}/api/v1/users/login`, formData, {
         withCredentials: true
       });
 
